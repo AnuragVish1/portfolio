@@ -1,0 +1,109 @@
+<div class="flex justify-center items-center h-full">
+    <div class="flex h-[42rem] justify-between items-center w-[90%]">
+        <div
+            class="p-2 pt-5 flex flex-col select-none justify-center subpixel-antialiased"
+        >
+            <h1
+                id="text1"
+                class="font-extrabold text-[14rem] font-inter overflow-hidden leading-none"
+            >
+                creative
+            </h1>
+            <h1
+                class="font-extrabold text-[14rem] font-inter leading-none overflow-hidden"
+                id="text2"
+            >
+                developer
+            </h1>
+        </div>
+        <div class="flex items-center justify-end">
+            <!--?xml version="1.0" encoding="utf-8"?-->
+            <svg
+                id="svgIcon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="550"
+                height="550"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-asterisk-icon lucide-asterisk"
+                ><path d="M12 6v12"></path><path d="M17.196 9 6.804 15"
+                ></path><path d="m6.804 9 10.392 6"></path></svg
+            >
+        </div>
+    </div>
+</div>
+<script>
+    // Import your libraries inside the script tag
+    import { gsap } from "gsap";
+    import SplitType from "split-type";
+
+    // Run after DOM is loaded
+    document.addEventListener("DOMContentLoaded", () => {
+        const ourText = new SplitType("#text1", { types: "chars" });
+        const ourText2 = new SplitType("#text2", { types: "chars" });
+        const chars = ourText.chars;
+        const chars2 = ourText2.chars;
+        const svg = document.getElementById("svgIcon");
+
+        gsap.fromTo(
+            chars,
+            {
+                y: 300,
+            },
+            {
+                y: 0,
+
+                stagger: 0.05,
+                duration: 2,
+                ease: "power4.out",
+            },
+        );
+        gsap.fromTo(
+            chars2,
+            {
+                y: 300,
+            },
+            {
+                y: 300,
+
+                stagger: 0.05,
+                duration: 2,
+                ease: "power4.out",
+            },
+        );
+        const myTimeout = setTimeout(() => {
+            gsap.fromTo(
+                chars2,
+                {
+                    y: 300,
+                },
+                {
+                    y: 0,
+
+                    stagger: 0.05,
+                    duration: 2,
+                    ease: "power4.out",
+                },
+            );
+        }, 300);
+
+        gsap.fromTo(
+            svg,
+            {
+                rotateZ: 0,
+            },
+            {
+                rotateZ: 720,
+                stagger: 0.05,
+                duration: 4,
+                ease: "power4.out",
+            },
+        );
+
+        // Your GSAP animation code can go here
+    });
+</script>

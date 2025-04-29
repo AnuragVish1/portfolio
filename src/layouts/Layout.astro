@@ -1,16 +1,24 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		
-		<link rel="stylesheet" href="/src/styles/global.css">
-	</head>
-	<body class="bg-[#fce7c8]">
-		<slot />
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+
+        <link rel="stylesheet" href="/src/styles/global.css" />
+    </head>
+    <body id="main-class" class="bg-[#f9f3e9] overflow-x-hidden">
+        <slot />
+    </body>
+    <script>
+        import LocomotiveScroll from "locomotive-scroll";
+
+        const scroll = new LocomotiveScroll({
+            el: document.getElementById("main-class"),
+            smooth: true,
+            multiplier: 0.2,
+            lerp: 0.08,
+        });
+    </script>
 </html>
-
-
