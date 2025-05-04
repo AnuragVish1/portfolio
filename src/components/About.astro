@@ -1,38 +1,211 @@
-<div class="h-screen  flex justify-center items-center" id="main">
-  <div class="flex justify-between items-center flex-col h-[90%] w-[90%] border-2 p-10 rounded-xl bg-[#1c1c1c] text-white" id="myDiv">
-    <div class=" flex h-full w-full items-center">
-      <h1 class="text-left text-3xl font-extrabold text-[8rem] font-inter whitespace-nowrap  leading-none w-[100%]">
+<div class="h-screen flex justify-center items-center" id="main">
+  <div
+    class="flex justify-between items-center flex-col h-[90%] w-[90%]  p-10 rounded-xl text-[#1c1c1c]"
+    id="myDiv"
+  >
+    <div class="flex h-full w-full items-center">
+      <h1
+      id="aboutme-heading"
+        class="text-left text-3xl font-extrabold text-[8rem] font-inter whitespace-nowrap leading-none w-[100%] border-b-2 border-[#1c1c1c] pb-5 overflow-hidden"
+      >
         about me
       </h1>
     </div>
-    <div class="flex top-0 w-full text-[2rem] text-justify h-full font-inter leading-15">
-        <p>Hi, I'm Anurag Vishwakarma. I'm a creative developer with a passion for <span class="bg-white text-[#1c1c1c]">frontend</span> web development and <span class="bg-white text-[#1c1c1c]">UI/UX design</span>. I blend technical skills with artistic approach to build engaging digital experiences.</p>
+    <div
+      class="flex top-0 w-full text-[2rem] text-justify h-full font-inter leading-15"
+    >
+      <p>
+        Hi, I'm Anurag Vishwakarma. I'm a creative developer with a passion for <span
+          class="bg-[#1c1c1c] text-white inline-flex flex-col overflow-hidden h-15 items-start"
+          id="mainEnterOne"
+          ><span id="title-one-a">frontend</span><span id="title-one-aa"
+            >frontend</span
+          ></span
+        > web development and <span
+          class="bg-[#1c1c1c] text-white inline-flex flex-col overflow-hidden h-15 items-start"
+          id="mainEnter"
+        >
+          <span id="title-a">UI/UX design</span><span id="title-aa"
+            >UI/UX design</span
+          >
+        </span>. I blend technical skills with <span
+          class="bg-[#1c1c1c] text-white inline-flex flex-col overflow-hidden h-15 items-start"
+          id="mainEnterArtist"
+          ><span id="title-artist-one">artistic</span><span
+            id="title-artist-two">artistic</span
+          ></span
+        > approach to build engaging digital experiences.
+      </p>
     </div>
   </div>
 </div>
 
 <script>
-  import gsap from 'gsap';
-  
-gsap.registerPlugin(ScrollTrigger)
-gsap.registerPlugin(SplitText)
-const myDiv = document.getElementById('myDiv');
-const main = document.getElementById('main');
-const paragraph = document.querySelector('p');  
-let split = SplitText.create(paragraph,{
-  type: "lines"
-})
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+  gsap.registerPlugin(ScrollTrigger, SplitText);
 
-gsap.from(split.lines, {
-  scrollTrigger: {
-    trigger: main,
-    start: "top 80%",
-    end: "top 30%",
-    scrub: true,
-  },
-  y: 100,
-  opacity: 0,
-  stagger: 0.1,
-});
+  const myDiv = document.getElementById("myDiv");
+  const main = document.getElementById("main");
+  const paragraph = document.querySelector("p");
+  let split = SplitText.create(paragraph, { type: "words, lines" });
 
+  var mainEnter = document.getElementById("mainEnter");
+  var splita = new SplitText("#title-a", { type: "chars" });
+  var splitb = new SplitText("#title-aa", { type: "chars" });
+  let isComplete = true;
+  let uiuxComplete = true;
+  let artisticComplete = true;
+  var mainEnterOne = document.getElementById("mainEnterOne");
+  var splitaa = new SplitText("#title-one-a", { type: "chars" });
+  var splitba = new SplitText("#title-one-aa", { type: "chars" });
+  var mainEnterArtist = document.getElementById("mainEnterArtist");
+  var splitArtistOne = new SplitText("#title-artist-one", { type: "chars" });
+  var splitArtistTwo = new SplitText("#title-artist-two", { type: "chars" });
+  var heading = document.querySelector("#aboutme-heading");
+  var headingSplit = new SplitText(heading, { type: "words, lines" });
+  gsap.from(
+    headingSplit.words,
+    {
+      duration: 1,
+      y: 150, // animate from 100px below // fade in from opacity: 0 and visibility: hidden
+      stagger: 0.08,
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: myDiv,
+        start: "top 70%",
+        toggleActions: "restart none none reverse"
+      },
+    } // 0.05 seconds between each
+  );
+  const tl = gsap.timeline({
+    paused: true,
+    onComplete: () => { isComplete = true; }
+  });
+
+  const tlUiux = gsap.timeline({
+    paused: true,
+    onComplete: () => { uiuxComplete = true; }
+  });
+
+  const tlArtist = gsap.timeline({
+    paused: true,
+    onComplete: () => { artisticComplete = true; }
+  });
+
+  tlArtist.fromTo(
+    splitArtistOne.chars,
+    {
+      y: 0,
+    },
+    {
+      duration: 1,
+      y: -50,
+      stagger: 0.02,
+      ease: "power4.inOut",
+    }
+  );
+  tlArtist.fromTo(
+    splitArtistTwo.chars,
+    {
+      y: 38,
+    },
+    {
+      duration: 1,
+      y: -60,
+      stagger: 0.02,
+      ease: "power4.inOut",
+    },
+    "<" // Start tween at the same time as previous tween, check the docs for more info position parameter https://greensock.com/position-parameter
+  );
+
+  tlUiux.fromTo(
+    splitaa.chars,
+    {
+      y: 0,
+    },
+    {
+      duration: 1,
+      y: -50,
+      stagger: 0.02,
+      ease: "power4.inOut",
+    }
+  );
+  tlUiux.fromTo(
+    splitba.chars,
+    {
+      y: 38,
+    },
+    {
+      duration: 1,
+      y: -60,
+      stagger: 0.02,
+      ease: "power4.inOut",
+    },
+    "<" // Start tween at the same time as previous tween, check the docs for more info position parameter https://greensock.com/position-parameter
+  );
+
+  tl.fromTo(
+    splita.chars,
+    {
+      y: 0,
+    },
+    {
+      duration: 1,
+      y: -50,
+      stagger: 0.02,
+      ease: "power4.inOut",
+    }
+  );
+
+  tl.fromTo(
+    splitb.chars,
+    {
+      y: 38,
+    },
+    {
+      duration: 1,
+      y: -60,
+      stagger: 0.02,
+      ease: "power4.inOut",
+    },
+    "<" // Start tween at the same time as previous tween, check the docs for more info position parameter https://greensock.com/position-parameter
+  );
+
+  // Normal Javascript, add event listener to a specifc elment
+  mainEnter?.addEventListener("mouseenter", () => {
+    tl.play();
+  });
+  mainEnter?.addEventListener("mouseleave", () => {
+    tl.reverse();
+  });
+
+  mainEnterOne?.addEventListener("mouseenter", () => {
+    tlUiux.play();
+  });
+  mainEnterOne?.addEventListener("mouseleave", () => {
+    tlUiux.reverse();
+  });
+  mainEnterArtist?.addEventListener("mouseenter", () => {
+    tlArtist.play();
+  });
+  mainEnterArtist?.addEventListener("mouseleave", () => {
+    tlArtist.reverse();
+  });
+  gsap.from(
+    split.lines,
+    {
+      duration: 1.5,
+      y: 100, // animate from 100px below
+      autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
+      stagger: 0.08,
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: myDiv,
+        start: "top center",
+        toggleActions: "restart none none reverse"
+      },
+    } // 0.05 seconds between each
+  );
 </script>

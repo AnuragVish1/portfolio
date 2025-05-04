@@ -1,5 +1,7 @@
-<div class="flex justify-center items-center h-full text-[#s1c1c1c]">
-  <div class="flex h-screen justify-between items-center w-[90%] pb-30">
+<div class="flex justify-center items-center h-full text-[#1c1c1c]">
+  <div
+    class="flex h-screen justify-between items-center w-[90%] pb-30 overflow-hidden"
+  >
     <div
       class="p-2 pt-5 flex flex-col select-none justify-center subpixel-antialiased w-full"
     >
@@ -16,8 +18,7 @@
         developer
       </h1>
     </div>
-    <div class="flex items-center ml-auto justify-end" id="wrap">
-      <!--?xml version="1.0" encoding="utf-8"?-->
+    <div class="flex items-center ml-auto justify-end cursor-move" id="wrap">
       <svg
         id="svgIcon"
         xmlns="http://www.w3.org/2000/svg"
@@ -29,83 +30,101 @@
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
-        ><path d="M12 6v12"></path><path d="M17.196 9 6.804 15"></path><path
-          d="m6.804 9 10.392 6"></path></svg
       >
+        <path d="M12 6v12"></path>
+        <path d="M17.196 9 6.804 15"></path>
+        <path d="m6.804 9 10.392 6"></path>
+      </svg>
     </div>
   </div>
 </div>
+
 <script>
   // Import your libraries inside the script tag
   import { gsap } from "gsap";
   import SplitType from "split-type";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { Draggable } from "gsap/Draggable";
+  import { InertiaPlugin } from "gsap/InertiaPlugin";
+  
+  // Register plugins
+  gsap.registerPlugin(ScrollTrigger, Draggable, InertiaPlugin);
 
-  // Run after DOM is loaded
-  document.addEventListener("DOMContentLoaded", () => {
+  // Make sure all initialization happens after the DOM is fully loaded
+  window.addEventListener("DOMContentLoaded", () => {
+    console.log("DOM loaded, initializing animations");
+    
+    // Initialize text splitting
     const ourText = new SplitType("#text1", { types: "chars" });
     const ourText2 = new SplitType("#text2", { types: "chars" });
     const chars = ourText.chars;
     const chars2 = ourText2.chars;
+    
+    // Get references to DOM elements
     const svg = document.getElementById("svgIcon");
     const wrap = document.getElementById("wrap");
-    
 
+    // Create draggable SVG
+    Draggable.create(wrap, {
+      type: "rotation",
+      inertia: true,
+      onPress: function() {
+        console.log("SVG pressed");
+      },
+      onDragStart: function() {
+        console.log("Drag started");
+      }
+    });
+    
+    // First text animation
     gsap.fromTo(
       chars,
       {
         y: 300,
+        opacity: 0
       },
       {
         y: 0,
-
+        opacity: 1,
         stagger: 0.05,
         duration: 2,
         ease: "power4.out",
+        onComplete: () => console.log("First text animation complete")
       }
     );
+
+    // Second text animation with delay
     gsap.fromTo(
       chars2,
       {
         y: 300,
+        opacity: 0
       },
       {
-        y: 300,
-
+        y: 0,
+        opacity: 1,
         stagger: 0.05,
         duration: 2,
+        delay: 0.3,
         ease: "power4.out",
+        onComplete: () => console.log("Second text animation complete")
       }
     );
-    const myTimeout = setTimeout(() => {
-      gsap.fromTo(
-        chars2,
-        {
-          y: 300,
-        },
-        {
-          y: 0,
 
-          stagger: 0.05,
-          duration: 2,
-          ease: "power4.out",
-        }
-      );
-    }, 300);
-
+    // SVG initial rotation animation
     gsap.fromTo(
       svg,
       {
-        rotateZ: 0,
+        rotation: 0,
+
       },
       {
-        rotateZ: 675,
-        stagger: 0.05,
+        rotation: 675,
+
         duration: 4,
         ease: "power4.out",
+        onComplete: () => console.log("SVG animation complete")
       }
     );
-
   });
-  
 </script>
