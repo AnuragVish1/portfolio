@@ -1,3 +1,38 @@
-<div class="h-screen">
-    <h1 class="text-center text-2xl font-bold">This is the about section</h1>
+<div class="h-screen  flex justify-center items-center" id="main">
+  <div class="flex justify-between items-center flex-col h-[90%] w-[90%] border-2 p-10 rounded-xl bg-[#1c1c1c] text-white" id="myDiv">
+    <div class=" flex h-full w-full items-center">
+      <h1 class="text-left text-3xl font-extrabold text-[8rem] font-inter whitespace-nowrap  leading-none w-[100%]">
+        about me
+      </h1>
+    </div>
+    <div class="flex top-0 w-full text-[2rem] text-justify h-full font-inter leading-15">
+        <p>Hi, I'm Anurag Vishwakarma. I'm a creative developer with a passion for <span class="bg-white text-[#1c1c1c]">frontend</span> web development and <span class="bg-white text-[#1c1c1c]">UI/UX design</span>. I blend technical skills with artistic approach to build engaging digital experiences.</p>
+    </div>
+  </div>
 </div>
+
+<script>
+  import gsap from 'gsap';
+  
+gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(SplitText)
+const myDiv = document.getElementById('myDiv');
+const main = document.getElementById('main');
+const paragraph = document.querySelector('p');  
+let split = SplitText.create(paragraph,{
+  type: "lines"
+})
+
+gsap.from(split.lines, {
+  scrollTrigger: {
+    trigger: main,
+    start: "top 80%",
+    end: "top 30%",
+    scrub: true,
+  },
+  y: 100,
+  opacity: 0,
+  stagger: 0.1,
+});
+
+</script>

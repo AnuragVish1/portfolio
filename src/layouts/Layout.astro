@@ -8,7 +8,7 @@
 
         <link rel="stylesheet" href="/src/styles/global.css" />
     </head>
-    <body id="main-class" class="bg-[#f9f3e9] overflow-x-hidden">
+    <body id="main-class" class="bg-[#f9f3e9] overflow-hidden">
         <slot />
     </body>
     <script>
@@ -17,7 +17,7 @@
         const scroll = new LocomotiveScroll({
             el: document.getElementById("main-class"),
             smooth: true,
-            multiplier: 0.2,
+            multiplier: 0.5,
             lerp: 0.08,
         });
     </script>
