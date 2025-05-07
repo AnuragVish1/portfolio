@@ -1,4 +1,4 @@
-<div class="h-screen flex justify-center items-center" id="main">
+<div class="h-screen flex justify-center items-center" id="aboutme">
   <div
     class="flex justify-between items-center flex-col h-[90%] w-[90%]  p-10 rounded-xl text-[#1c1c1c]"
     id="myDiv"
@@ -15,7 +15,7 @@
       class="flex top-0 w-full text-[2rem] text-justify h-full font-inter leading-15"
     >
       <p>
-        Hi, I'm Anurag Vishwakarma. I'm a creative developer with a passion for <span
+        Hi, I'm Anurag Vishwakarma. I'm a creative developer with interest in <span
           class="bg-[#1c1c1c] text-white inline-flex flex-col overflow-hidden h-15 items-start"
           id="mainEnterOne"
           ><span id="title-one-a">frontend</span><span id="title-one-aa"
@@ -47,7 +47,7 @@
   gsap.registerPlugin(ScrollTrigger, SplitText);
 
   const myDiv = document.getElementById("myDiv");
-  const main = document.getElementById("main");
+
   const paragraph = document.querySelector("p");
   let split = SplitText.create(paragraph, { type: "words, lines" });
 

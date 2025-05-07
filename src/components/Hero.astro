@@ -18,7 +18,7 @@
         developer
       </h1>
     </div>
-    <div class="flex items-center ml-auto justify-end cursor-move" id="wrap">
+    <div class="flex items-center ml-auto justify-end" id="wrap">
       <svg
         id="svgIcon"
         xmlns="http://www.w3.org/2000/svg"
@@ -30,6 +30,7 @@
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
+        class="leading-none"
       >
         <path d="M12 6v12"></path>
         <path d="M17.196 9 6.804 15"></path>
@@ -67,6 +68,7 @@
     // Create draggable SVG
     Draggable.create(wrap, {
       type: "rotation",
+      cursor: "none",
       inertia: true,
       onPress: function() {
         console.log("SVG pressed");
