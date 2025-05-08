@@ -131,7 +131,7 @@ let skills = [
   </div>
 </div>
 <script>
-  import gsap from "gsap";
+  import {gsap} from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import { SplitText } from "gsap/SplitText";
   gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -148,7 +148,8 @@ let skills = [
       ease: "power4.out",
       scrollTrigger: {
         trigger: myDiv,
-        start: "top 70%",
+        start: "top center",
+        
         toggleActions: "restart none none reverse",
       },
     } // 0.05 seconds between each
@@ -160,7 +161,7 @@ let skills = [
     ease: "power4.out",
     scrollTrigger: {
       trigger: myDiv,
-      start: "top 70%",
+      start: "top center",
       toggleActions: "restart none none reverse",
     },
   });

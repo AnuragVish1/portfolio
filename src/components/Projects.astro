@@ -1,17 +1,60 @@
 <div>
-    <div class="h-screen flex justify-center items-center" id="skills">
-        <div
-          class="flex justify-between items-center flex-col h-[90%] w-[90%] p-10 rounded-xl text-[#1c1c1c]"
-          id="skillsDiv"
+  <div class="h-screen flex justify-center items-center" id="projects">
+    <div
+      class="flex justify-between items-center flex-col h-[90%] w-[90%] p-10 rounded-xl text-[#1c1c1c]"
+      id="projectsDiv"
+    >
+      <div class="flex h-full w-full items-center">
+        <h1
+          id="heading"
+          class="text-left text-3xl font-extrabold text-[8rem] font-inter whitespace-nowrap leading-none w-[100%] border-b-2 border-[#1c1c1c] pb-5 overflow-hidden"
         >
-          <div class="flex h-full w-full items-center">
-            <h1
-            id="heading"
-              class="text-left text-3xl font-extrabold text-[8rem] font-inter whitespace-nowrap leading-none w-[100%] border-b-2 border-[#1c1c1c] pb-5 overflow-hidden"
-            >
-              projects
-            </h1>
-          </div>
+          projects
+        </h1>
+      </div>
+      <div class="w-[100%] p-5 pt-22 flex flex-col gap-10 h-[30rem]">
+        <div
+          class="image-container h-full w-[70%] bg-amber-50 relative overflow-hidden rounded-2xl"
+          id="imageContainer"
+        >
+          <img
+            src="/Screenshot 2025-05-07 182958.png"
+            alt=""
+            class="h-[120%] w-full object-cover bg-amber-500 object-center p-0"
+            onclick="imgclick()"
+          />
+        </div>
+        <div class="flex flex-col justify-center gap-10">
+          <h1 class="text-5xl font-inter font-bold">Course Registration App</h1>
+          <p class="font-inter text-xl text-justify">
+            Developed a comprehensive university admin side course management
+            system using ASP.NET framework and SQL database.Implemented secure
+            CRUD operations for managing course catalogs, semester scheduling,
+            and course and semester assigning with an intuitive UI
+          </p>
         </div>
       </div>
+    </div>
+  </div>
 </div>
+<script>
+  import type { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  let imageContainer = document.getElementById("imageContainer")
+  gsap.utils.toArray(".image-container").forEach(function (container) {
+    let image = container.querySelector("img");
+
+    gsap.to(image, {
+      y: () => image.offsetHeight - container.offsetHeight * 1.5,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: container,
+        scrub: true,
+        pin: false,
+        invalidateOnRefresh: true,
+      },
+    });
+  });
+</script>
