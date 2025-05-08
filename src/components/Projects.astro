@@ -1,60 +1,85 @@
-<div>
-  <div class="h-screen flex justify-center items-center" id="projects">
-    <div
-      class="flex justify-between items-center flex-col h-[90%] w-[90%] p-10 rounded-xl text-[#1c1c1c]"
-      id="projectsDiv"
-    >
-      <div class="flex h-full w-full items-center">
-        <h1
-          id="heading"
-          class="text-left text-3xl font-extrabold text-[8rem] font-inter whitespace-nowrap leading-none w-[100%] border-b-2 border-[#1c1c1c] pb-5 overflow-hidden"
-        >
-          projects
-        </h1>
-      </div>
-      <div class="w-[100%] p-5 pt-22 flex flex-col gap-10 h-[30rem]">
-        <div
-          class="image-container h-full w-[70%] bg-amber-50 relative overflow-hidden rounded-2xl"
-          id="imageContainer"
-        >
-          <img
-            src="/Screenshot 2025-05-07 182958.png"
-            alt=""
-            class="h-[120%] w-full object-cover bg-amber-500 object-center p-0"
-            onclick="imgclick()"
-          />
-        </div>
-        <div class="flex flex-col justify-center gap-10">
-          <h1 class="text-5xl font-inter font-bold">Course Registration App</h1>
-          <p class="font-inter text-xl text-justify">
-            Developed a comprehensive university admin side course management
-            system using ASP.NET framework and SQL database.Implemented secure
-            CRUD operations for managing course catalogs, semester scheduling,
-            and course and semester assigning with an intuitive UI
-          </p>
-        </div>
+---
+import { MyDrawer } from "@/components/MyDrawer";
+
+let projects = [
+  {
+    title: "course registration app",
+    image: "/course-registration.png",
+    description: `Developed a comprehensive university admin side course management system using ASP.NET framework and
+    SQL database.
+    Implemented secure CRUD operations for managing course catalogs, semester scheduling, and course and
+    semester assigning with an intuitive UI`,
+  },
+  {
+    title: "tournament organizer",
+    image: "/tournament-organizer.png",
+    description: `Built a Tournament Organizer app using React as frontend. Implemented Google Authentication for secure
+    user access and role-based permissions management, RESTFUL API integration for communicating with the
+    PHP backend and intuitive UI with use of shadcn and tailwindcss.`,
+  },
+];
+---
+
+<div class="h-screen flex justify-center items-center" id="projects">
+  <div
+    class="flex justify-between items-center flex-col h-[90%] w-[90%] p-10 rounded-xl text-[#1c1c1c]"
+    id="projectsDiv"
+  >
+    <div class="flex pb-5 w-full items-center">
+      <h1
+        id="projectHeading"
+        class="text-left text-3xl font-extrabold text-[8rem] font-inter whitespace-nowrap leading-none w-[100%] border-b-2 border-[#1c1c1c] pb-5 overflow-hidden"
+      >
+        projects
+      </h1>
+    </div>
+    <div class="w-[100%] flex flex-col gap-10 h-[30rem]">
+      <div class="flex flex-col justify-center">
+        {
+          projects.map((project) => (
+            <MyDrawer
+              client:load
+              title={project.title}
+              description={project.description}
+              image={project.image}
+            >
+              <div class="border-b-1 border-[#1c1c1c] pb-10 pt-10 relative group hover:text-white transition-all project-list duration-300 cursor-none">
+                <div class="absolute bg-[#1c1c1c] h-0 w-full group-hover:h-full transition-all duration-500 top-0 -z-50" />
+                <a
+                  href="#aboutus"
+                  class="text-5xl cursor-none font-inter font-bold group-hover:pl-5 transition-all duration-400 ease-out h-auto text-left"
+                >
+                  {project.title}
+                </a>
+              </div>
+            </MyDrawer>
+          ))
+        }
       </div>
     </div>
   </div>
 </div>
-<script>
-  import type { useGSAP } from "@gsap/react";
-import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
-  let imageContainer = document.getElementById("imageContainer")
-  gsap.utils.toArray(".image-container").forEach(function (container) {
-    let image = container.querySelector("img");
 
-    gsap.to(image, {
-      y: () => image.offsetHeight - container.offsetHeight * 1.5,
-      ease: "power1.inOut",
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  var heading = document.querySelector("#projectHeading");
+  var myDiv = document.getElementById("projects");
+  var headingSplit = new SplitText(heading, { type: "words, lines, chars" });
+  gsap.from(
+    headingSplit.chars,
+    {
+      duration: 0.7,
+      y: 150,
+      stagger: 0.08,
+      ease: "power4.out",
       scrollTrigger: {
-        trigger: container,
-        scrub: true,
-        pin: false,
-        invalidateOnRefresh: true,
+        trigger: myDiv,
+        start: "top center",
+        toggleActions: "restart none none reverse",
       },
-    });
-  });
+    } // 0.05 seconds between each
+  );
 </script>
