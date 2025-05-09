@@ -13,7 +13,12 @@ import {
 export const MyDrawer = ({ children, image, description, title }) => {
   return (
     <Drawer>
-      <DrawerTrigger className="text-left">{children}</DrawerTrigger>
+      <DrawerTrigger
+        className="text-left w-full
+        "
+      >
+        {children}
+      </DrawerTrigger>
       <DrawerContent className="bg-[#f9f3e9]">
         <div className="p-10 font-inter">
           <div className=" flex gap-6">

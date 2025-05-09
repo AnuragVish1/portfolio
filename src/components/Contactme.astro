@@ -38,18 +38,16 @@
         });
     }
     // Set up the hover event listeners
-    contactDiv.addEventListener("mousemove", moveText);
-    contactDiv.addEventListener("mouseleave", resetText);
-    contactDiv.addEventListener("mouseleave", resetDiv);
+    contactDiv?.addEventListener("mousemove", moveText);
+    contactDiv?.addEventListener("mouseleave", resetText);
+    contactDiv?.addEventListener("mouseleave", resetDiv);
 
-    function mailsend() {}
-
-    button.addEventListener("click", function () {
+    button?.addEventListener("click", function () {
         location.href = mailtoLink;
     });
 
     // Function to move the text toward cursor
-    function moveText(e) {
+    function moveText(e: any) {
         // Get the relative position of the cursor inside the div
         const rect = contactDiv.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;

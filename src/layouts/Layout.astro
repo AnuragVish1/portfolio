@@ -1,67 +1,68 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
 
-    <link rel="stylesheet" href="/src/styles/global.css" />
-    <style>
-        html, body{
-            cursor: none;
-            scroll-behavior: smooth;
-        }
-      #icon {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 9999;
-        pointer-events: none; /* Make cursor pass-through */
-        will-change: transform;
-      }
-    </style>
-  </head>
-  <body id="main-class" class="bg-[#f9f3e9]">
-    <div id="icon">
-    <svg
-      
-      xmlns="http://www.w3.org/2000/svg"
-      width="48"
-      height="48"
-      viewBox="0 0 24 24"
-      ><path
-        fill="#FFF"
-        stroke="#000"
-        stroke-width="1.5"
-        d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.35Z"
-      ></path></svg
-    >
-</div>
-    <slot />
-  </body>
-  <script>
-    import LocomotiveScroll from "locomotive-scroll";
-    import { ScrollSmoother } from "gsap/ScrollSmoother";
-    import gsap from "gsap";
-    // const scroll = new LocomotiveScroll({
-    //   el: document.querySelector("html"),
-    //   smooth: true,
-    //   multiplier: 0.5,
-    //   lerp: 0.08,
-    // });
-    
+        <link rel="stylesheet" href="/src/styles/global.css" />
+        <style>
+            html,
+            body {
+                cursor: none;
+                scroll-behavior: smooth;
+            }
+            a,
+            button {
+                cursor: url("../../public/pointer.svg"), auto;
+            }
+            #icon {
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 9999;
+                pointer-events: none; /* Make cursor pass-through */
+                will-change: transform;
+            }
+        </style>
+    </head>
+    <body id="main-class" class="bg-[#f9f3e9]">
+        <div id="icon">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                ><path
+                    fill="#FFF"
+                    stroke="#000"
+                    stroke-width="1.5"
+                    d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.35Z"
+                ></path></svg
+            >
+        </div>
+        <slot />
+    </body>
+    <script>
+        import LocomotiveScroll from "locomotive-scroll";
+        import { ScrollSmoother } from "gsap/ScrollSmoother";
+        import gsap from "gsap";
+        // const scroll = new LocomotiveScroll({
+        //   el: document.querySelector("html"),
+        //   smooth: true,
+        //   multiplier: 0.5,
+        //   lerp: 0.08,
+        // });
 
-    gsap.set("#icon", { xPercent: -50, yPercent: -50 });
+        gsap.set("#icon", { xPercent: -50, yPercent: -50 });
 
-    let xTo = gsap.quickTo("#icon", "x", { duration: 0.2, ease: "power3" }),
-      yTo = gsap.quickTo("#icon", "y", { duration: 0.2, ease: "power3" });
+        let xTo = gsap.quickTo("#icon", "x", { duration: 0.2, ease: "power3" }),
+            yTo = gsap.quickTo("#icon", "y", { duration: 0.2, ease: "power3" });
 
-    window.addEventListener("pointermove", (e) => {
-      xTo(e.clientX);
-      yTo(e.clientY);
-    });
-
-    
-  </script>
+        window.addEventListener("pointermove", (e) => {
+            xTo(e.clientX);
+            yTo(e.clientY);
+        });
+    </script>
 </html>
