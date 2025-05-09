@@ -1,83 +1,83 @@
 <div class="h-screen flex justify-center items-center" id="conatact">
-  <div
-    class="bg-[#1c1c1c] h-[14rem] w-[14rem] rounded-full flex justify-center items-center text-white font-bold font-inter text-[2.5rem]"
-    id="divbutton"
-  >
-    <h1>Let's Talk</h1>
-  </div>
+    <div
+        class="bg-[#1c1c1c] h-[14rem] w-[14rem] rounded-full flex justify-center items-center text-white font-bold font-inter text-[2.5rem]"
+        id="divbutton"
+    >
+        <h1>Let's Talk</h1>
+    </div>
 </div>
 
 <script>
-  import { gsap } from "gsap/gsap-core";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
-  // First, select your elements
-  const contactDiv = document.querySelector("#conatact > div");
-  const textElement = contactDiv.querySelector("h1");
-  const contact = document.getElementById("conatact");
-  const button = document.getElementById("divbutton");
-  const email = "anuragvishwakarmaalt@gmail.com";
-  const subject = "";
-  const body = "";
+    import { gsap } from "gsap/gsap-core";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    gsap.registerPlugin(ScrollTrigger);
+    // First, select your elements
+    const contactDiv = document.querySelector("#conatact > div");
+    const textElement = contactDiv?.querySelector("h1");
+    const contact = document.getElementById("conatact");
+    const button = document.getElementById("divbutton");
+    const email = "anuragvishwakarmaalt@gmail.com";
+    const subject = "";
+    const body = "";
 
-  const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  function resetText() {
-    gsap.to(textElement, {
-      x: 0,
-      y: 0,
-      duration: 1.5,
-      ease: "elastic.out(1, 2)", // Gives a nice bouncy return
-    });
-  }
-  function resetDiv() {
-    gsap.to(contactDiv, {
-      x: 0,
-      y: 0,
-      duration: 2,
-      ease: "elastic.out(1, 2)", // Gives a nice bouncy return
-    });
-  }
-  // Set up the hover event listeners
-  contactDiv.addEventListener("mousemove", moveText);
-  contactDiv.addEventListener("mouseleave", resetText);
-  contactDiv.addEventListener("mouseleave", resetDiv);
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    function resetText() {
+        gsap.to(textElement, {
+            x: 0,
+            y: 0,
+            duration: 1.5,
+            ease: "elastic.out(1, 2)", // Gives a nice bouncy return
+        });
+    }
+    function resetDiv() {
+        gsap.to(contactDiv, {
+            x: 0,
+            y: 0,
+            duration: 2,
+            ease: "elastic.out(1, 2)", // Gives a nice bouncy return
+        });
+    }
+    // Set up the hover event listeners
+    contactDiv.addEventListener("mousemove", moveText);
+    contactDiv.addEventListener("mouseleave", resetText);
+    contactDiv.addEventListener("mouseleave", resetDiv);
 
-  function mailsend() {}
+    function mailsend() {}
 
-  button.addEventListener("click", function () {
-    location.href = mailtoLink;
-  });
-
-  // Function to move the text toward cursor
-  function moveText(e) {
-    // Get the relative position of the cursor inside the div
-    const rect = contactDiv.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-
-    // Move text toward cursor, but only slightly (adjust multiplier for intensity)
-    gsap.to(textElement, {
-      x: x * 0.4, // Reduce movement by multiplying by a small value
-      y: y * 0.4,
-      duration: 1, // Makes movement smooth
-      ease: "power2.out",
+    button.addEventListener("click", function () {
+        location.href = mailtoLink;
     });
 
-    gsap.to(contactDiv, {
-      x: x * 0.5, // Reduce movement by multiplying by a small value
-      y: y * 0.5,
-      duration: 1, // Makes movement smooth
-      ease: "power4.out",
+    // Function to move the text toward cursor
+    function moveText(e) {
+        // Get the relative position of the cursor inside the div
+        const rect = contactDiv.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        // Move text toward cursor, but only slightly (adjust multiplier for intensity)
+        gsap.to(textElement, {
+            x: x * 0.4, // Reduce movement by multiplying by a small value
+            y: y * 0.4,
+            duration: 1, // Makes movement smooth
+            ease: "power2.out",
+        });
+
+        gsap.to(contactDiv, {
+            x: x * 0.5, // Reduce movement by multiplying by a small value
+            y: y * 0.5,
+            duration: 1, // Makes movement smooth
+            ease: "power4.out",
+        });
+    }
+    gsap.from(contactDiv, {
+        scale: 0,
+        duration: 1,
+        ease: "power4.inOut",
+        scrollTrigger: {
+            trigger: contact,
+            start: "top center",
+            toggleActions: "restart none none reverse",
+        },
     });
-  }
-  gsap.from(contactDiv, {
-    scale: 0,
-    duration: 1,
-    ease: "power4.inOut",
-    scrollTrigger: {
-      trigger: contact,
-      start: "top center",
-      toggleActions: "restart none none reverse",
-    },
-  });
 </script>
