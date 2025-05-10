@@ -19,16 +19,16 @@ export const MyDrawer = ({ children, image, description, title }) => {
       >
         {children}
       </DrawerTrigger>
-      <DrawerContent className="bg-[#f9f3e9]">
+      <DrawerContent className="bg-[#f9f3e9] overflow-scroll">
         <div className="p-10 font-inter">
-          <div className=" flex gap-6">
+          <div className=" flex gap-6 md:flex-row flex-col ">
             <img
               src={image}
               alt=""
               className=" rounded-xl h-[15rem]  mt-5 object-cover object-center"
             />
             <div className="flex flex-col justify-between">
-              <h1 className="text-[4rem] font-bold">{title}</h1>
+              <h1 className="md:text-[4rem] text-[2.5rem] font-bold">{title}</h1>
 
               <p className=" pt-5 text-2xl w-full text-justify">
                 {description}

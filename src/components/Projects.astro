@@ -22,18 +22,18 @@ let projects = [
 
 <div class="h-screen flex justify-center items-center" id="projects">
     <div
-        class="flex justify-between items-center flex-col h-[90%] w-[90%] p-10 rounded-xl text-[#1c1c1c]"
+        class="flex md:justify-between items-center flex-col h-[90%] w-[90%] p-10 rounded-xl text-[#1c1c1c]"
         id="projectsDiv"
     >
         <div class="flex pb-5 w-full items-center">
             <h1
                 id="projectHeading"
-                class="text-left text-3xl font-extrabold text-[8rem] font-inter whitespace-nowrap leading-none w-[100%] border-b-2 border-[#1c1c1c] pb-5 overflow-hidden"
+                class="text-left text-3xl font-extrabold font-inter whitespace-nowrap leading-none w-[100%] border-b-2 border-[#1c1c1c] pb-5 overflow-hidden md:text-[8rem] text-[3.2rem]"
             >
                 projects
             </h1>
         </div>
-        <div class="w-[100%] flex flex-col gap-10 h-[30rem]">
+        <div class="w-[100%] flex flex-col h-[30rem] md:pt-0 pt-8">
             <div class="flex flex-col justify-center">
                 {
                     projects.map((project) => (
@@ -45,13 +45,16 @@ let projects = [
                                 image={project.image}
                             >
                                 <div class="border-b-1 border-[#1c1c1c] pb-10 pt-10 relative group hover:text-white transition-all project-list duration-300 cursor-none">
-                                    <div class="absolute bg-[#1c1c1c] h-0 w-full group-hover:h-full transition-all duration-500 top-0 -z-50" />
+                                    <div class="absolute bg-[#1c1c1c] h-0 w-full group-hover:h-full transition-all duration-500 top-0 -z-50" ></div>
+                                    <div class="flex justify-between items-center">
                                     <a
-                                        href="#aboutus"0
-                                        class="text-5xl cursor-none font-inter font-bold group-hover:pl-5 transition-all duration-400 ease-out h-auto text-left"
+                                        href="#aboutus"
+                                        class="md:text-5xl text-[1.5rem] cursor-none font-inter font-bold group-hover:pl-10 md:w-auto w-[70%] pl-5 transition-all duration-400 ease-out h-auto text-left"
                                     >
                                         {project.title}
                                     </a>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:mr-10 mr-5 transition-all duration-400 ease-out" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right-icon lucide-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                                    </div>
                                 </div>
                             </MyDrawer>
                         </div>

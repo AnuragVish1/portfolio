@@ -1,30 +1,174 @@
 <div class="flex justify-center">
-<div class="flex justify-between p-2 pr-8 pl-8 mt-8 items-center w-[90%] bg-[#1c1c1c] bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-20 border border-gray-100
- rounded-lg text-[#f0f0f0]">
-  <div>
-    <h1 class="font-inter font-bold text-[1.2rem] -rotate-45"> <svg
-      id="svgIcon2"
-      xmlns="http://www.w3.org/2000/svg"
-      width="50"
-      height="50"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="lucide lucide-asterisk-icon lucide-asterisk"
-      ><path d="M12 6v12"></path><path d="M17.196 9 6.804 15"
-      ></path><path d="m6.804 9 10.392 6"></path></svg
-  ></h1>
+  <div
+    id="menu"
+    class="fixed bg-[#1c1c1c] h-full z-50 w-full overflow-hidden transform translate-x-full right-0 text-white font-inter"
+  >
+    <div class="text-white w-[95%] p-8 justify-end items-center mt-4 flex">
+      <svg
+        id="cross-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="42"
+        height="42"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-x-icon lucide-x"
+        ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
+      >
+    </div>
+    <div class="flex flex-col items-center gap-15 pt-10">
+      <a
+       
+        class="menu-items text-6xl border-b-2 border-white w-[80%] pb-5 text-center"
+        href="#aboutme">about me</a
+      >
+      <a
+        
+        class="menu-items text-6xl border-b-2 border-white w-[80%] pb-5 text-center"
+        href="#skills">skills</a
+      >
+      <a
+        
+        class="menu-items text-6xl border-b-2 border-white w-[80%] pb-5 text-center"
+        href="#projects">projects</a
+      >
+      <a
+        
+        class="menu-items text-6xl border-b-2 border-white w-[80%] pb-5 text-center"
+        href="#conatact">let's talk</a
+      >
+    </div>
   </div>
-  <div class=" font-inter text-[1.2rem] font-bold flex gap-12 ">
+  <div
+    class="flex justify-between p-2 pr-8 pl-8 mt-8 items-center w-[90%] bg-[#1c1c1c] bg-clip-padding backdrop-filter bg-opacity-20 border border-gray-100
+ rounded-lg text-[#f0f0f0]"
+  >
+    <div>
+      <h1 class="font-inter font-bold text-[1.2rem] -rotate-45">
+        <svg
+          id="svgIcon2"
+          xmlns="http://www.w3.org/2000/svg"
+          width="50"
+          height="50"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-asterisk-icon lucide-asterisk"
+          ><path d="M12 6v12"></path><path d="M17.196 9 6.804 15"></path><path
+            d="m6.804 9 10.392 6"></path></svg
+        >
+      </h1>
+    </div>
+    <div class="font-inter text-[1.2rem] font-bold flex gap-12">
+      <a
+        href="#aboutme"
+        class="hover:bg-[#f0f0f0] cursor-none hover:text-[#1c1c1c] p-2 rounded-md transition-all duration-300 ease-in-out md:block hidden"
+        >about me</a
+      >
+      <a
+        href="#skills"
+        class="hover:bg-[#f0f0f0] cursor-none hover:text-[#1c1c1c] p-2 rounded-md transition-all duration-200 ease-in md:block hidden"
+        >skills</a
+      >
+      <a
+        href="#projects"
+        class="hover:bg-[#f0f0f0] cursor-none hover:text-[#1c1c1c] p-2 rounded-md transition-all duration-200 ease-in md:block hidden"
+        >projects</a
+      >
+      <a
+        href="#conatact"
+        class="hover:bg-[#f0f0f0] cursor-none hover:text-[#1c1c1c] p-2 rounded-md transition-all duration-200 ease-in md:block hidden"
+        >let's talk</a
+      >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        id="menu-icon"
+        class="md:hidden"
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-menu-icon lucide-menu"
+        ><path d="M4 12h16"></path><path d="M4 18h16"></path><path d="M4 6h16"
+        ></path></svg
+      >
+    </div>
+  </div>
+</div>
+<script>
+  import { gsap } from "gsap";
+  let menu_icon = document.getElementById("menu-icon");
+  let menu = document.getElementById("menu");
+  let menu_items = document.querySelectorAll(".menu-items");
+  let cross_icon = document.getElementById("cross-icon");
+  menu_icon?.addEventListener("click", function () {
+    gsap.to(menu, {
+      translateX: 0,
+      duration: 0.5,
+      ease: "power2.out",
+    });
 
-      <a href="#aboutme" class="hover:bg-[#f0f0f0] cursor-none hover:text-[#1c1c1c] p-2 rounded-md transition-all duration-300 ease-in-out">about me</a>
-      <a href="#skills" class="hover:bg-[#f0f0f0] cursor-none hover:text-[#1c1c1c] p-2 rounded-md transition-all duration-200 ease-in">skills</a>
-      <a href="#projects" class="hover:bg-[#f0f0f0] cursor-none hover:text-[#1c1c1c] p-2 rounded-md transition-all duration-200 ease-in">projects</a>
-      <a href="#conatact" class="hover:bg-[#f0f0f0] cursor-none hover:text-[#1c1c1c] p-2 rounded-md transition-all duration-200 ease-in">let's talk</a>
-  
-  </div>
-</div>
-</div>
+    gsap.from(menu_items, {
+      duration: 1.5,
+      y: 100,
+      opacity: 0,
+      stagger: 0.08,
+      ease: "power3.out",
+    });
+  });
+  cross_icon?.addEventListener("click", function () {
+    gsap.to(menu_items, {
+      duration: 0.7,
+      y: -100,
+      opacity: 0,
+      stagger: 0.06,
+      staggerDirection: -1,
+      ease: "power3.in",
+      onComplete: function () {
+        // Reset the y position after animation completes (but while still invisible)
+        gsap.set(menu_items, { y: 0, clearProps: "opacity,y" });
+      },
+    });
+
+    gsap.to(menu, {
+      translateX: "100%",
+      duration: 0.5,
+      ease: "power2.in",
+      delay: 0.4,
+    });
+  });
+
+  menu_items.forEach((item) => {
+    item.addEventListener("click", () => {
+      gsap.to(menu_items, {
+        duration: 0.7,
+        y: -100,
+        opacity: 0,
+        stagger: 0.06,
+        staggerDirection: -1,
+        ease: "power3.in",
+        onComplete: function () {
+          // Reset the y position after animation completes (but while still invisible)
+          gsap.set(menu_items, { y: 0, clearProps: "opacity,y" });
+        },
+      });
+
+      gsap.to(menu, {
+        translateX: "100%",
+        duration: 0.5,
+        ease: "power2.in",
+        delay: 0.4,
+      });
+    });
+  });
+</script>
