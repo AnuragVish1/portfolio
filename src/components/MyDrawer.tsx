@@ -19,8 +19,8 @@ export const MyDrawer = ({ children, image, description, title }) => {
       >
         {children}
       </DrawerTrigger>
-      <DrawerContent className="bg-[#f9f3e9] overflow-scroll">
-        <div className="p-10 font-inter">
+      <DrawerContent className="bg-[#f9f3e9]">
+        <div className="p-10 font-inter overflow-scroll">
           <div className=" flex gap-6 md:flex-row flex-col ">
             <img
               src={image}
@@ -30,7 +30,7 @@ export const MyDrawer = ({ children, image, description, title }) => {
             <div className="flex flex-col justify-between">
               <h1 className="md:text-[4rem] text-[2.5rem] font-bold">{title}</h1>
 
-              <p className=" pt-5 text-2xl w-full text-justify">
+              <p className=" pt-5 text-2xl w-full text-justify overflow-scroll">
                 {description}
               </p>
             </div>
