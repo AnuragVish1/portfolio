@@ -18,7 +18,7 @@
         developer
       </h1>
     </div>
-    <div class="flex items-center justify-end" id="wrap">
+    <div class="flex items-center justify-end w-[25rem] md:w-auto" id="wrap">
       <svg
         id="svgIcon"
         xmlns="http://www.w3.org/2000/svg"
@@ -52,9 +52,7 @@
   gsap.registerPlugin(ScrollTrigger, Draggable, InertiaPlugin);
 
   // Make sure all initialization happens after the DOM is fully loaded
-  window.addEventListener("DOMContentLoaded", () => {
-    console.log("DOM loaded, initializing animations");
-    
+  window.addEventListener("DOMContentLoaded", () => {    
     // Initialize text splitting
     const ourText = new SplitType("#text1", { types: "chars" });
     const ourText2 = new SplitType("#text2", { types: "chars" });
@@ -71,10 +69,10 @@
       cursor: "none",
       inertia: true,
       onPress: function() {
-        console.log("SVG pressed");
+
       },
       onDragStart: function() {
-        console.log("Drag started");
+
       }
     });
     
@@ -91,7 +89,7 @@
         stagger: 0.05,
         duration: 2,
         ease: "power4.out",
-        onComplete: () => console.log("First text animation complete")
+        
       }
     );
 
@@ -109,7 +107,7 @@
         duration: 2,
         delay: 0.3,
         ease: "power4.out",
-        onComplete: () => console.log("Second text animation complete")
+        
       }
     );
 
@@ -125,7 +123,7 @@
 
         duration: 4,
         ease: "power4.out",
-        onComplete: () => console.log("SVG animation complete")
+
       }
     );
   });
