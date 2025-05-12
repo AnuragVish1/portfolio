@@ -1,37 +1,15 @@
 <div class="flex justify-center items-center h-full text-[#1c1c1c]">
-  <div
-    class="flex flex-col md:flex-row h-screen md:justify-between items-center w-[90%] pb-30 overflow-hidden"
-  >
-    <div
-      class="p-2 md:pt-5 pt-25 text-center md:text-left flex flex-col select-none justify-center subpixel-antialiased w-full"
-    >
-      <h1
-        id="text1"
-        class="font-extrabold md:text-[10rem] text-[4rem] font-inter overflow-hidden leading-none"
-      >
+  <div class="flex flex-col min-[1214px]:flex-row md:flex-row h-screen md:justify-between items-center w-[90%] pb-30 overflow-hidden">
+    <div class="p-2 md:pt-5 pt-25 text-center md:text-left flex flex-col select-none justify-center subpixel-antialiased w-full">
+      <h1 id="text1" class="font-extrabold text-7xl sm:text-6xl md:text-8xl lg:text-[10rem] xl:text-10xl font-inter overflow-hidden leading-none">
         creative
       </h1>
-      <h1
-        class="font-extrabold  md:text-[10rem] text-[4rem] md:pt-0 pt-4 w-auto font-inter leading-none overflow-hidden"
-        id="text2"
-      >
+      <h1 class="font-extrabold text-7xl sm:text-6xl md:text-8xl lg:text-[10rem] xl:text-10xl md:pt-0 pt-4 w-auto font-inter leading-none overflow-hidden" id="text2">
         developer
       </h1>
     </div>
-    <div class="flex items-center justify-end w-[25rem] md:w-auto" id="wrap">
-      <svg
-        id="svgIcon"
-        xmlns="http://www.w3.org/2000/svg"
-        width="500"
-        height="500"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="leading-none"
-      >
+    <div class="flex items-center justify-end w-[25rem] sm:w-[20rem] md:w-[25rem] lg:w-[30rem] xl:w-[35rem]" id="wrap">
+      <svg id="svgIcon" xmlns="http://www.w3.org/2000/svg" width="450" height="450" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="leading-none">
         <path d="M12 6v12"></path>
         <path d="M17.196 9 6.804 15"></path>
         <path d="m6.804 9 10.392 6"></path>
@@ -50,9 +28,10 @@
   
   // Register plugins
   gsap.registerPlugin(ScrollTrigger, Draggable, InertiaPlugin);
-
+  
   // Make sure all initialization happens after the DOM is fully loaded
-  window.addEventListener("DOMContentLoaded", () => {    
+  window.addEventListener("DOMContentLoaded", () => {
+    
     // Initialize text splitting
     const ourText = new SplitType("#text1", { types: "chars" });
     const ourText2 = new SplitType("#text2", { types: "chars" });
@@ -62,18 +41,14 @@
     // Get references to DOM elements
     const svg = document.getElementById("svgIcon");
     const wrap = document.getElementById("wrap");
-
+    
     // Create draggable SVG
     Draggable.create(wrap, {
       type: "rotation",
       cursor: "none",
       inertia: true,
-      onPress: function() {
-
-      },
-      onDragStart: function() {
-
-      }
+      onPress: function() {},
+      onDragStart: function() {}
     });
     
     // First text animation
@@ -89,10 +64,9 @@
         stagger: 0.05,
         duration: 2,
         ease: "power4.out",
-        
       }
     );
-
+    
     // Second text animation with delay
     gsap.fromTo(
       chars2,
@@ -107,23 +81,19 @@
         duration: 2,
         delay: 0.3,
         ease: "power4.out",
-        
       }
     );
-
+    
     // SVG initial rotation animation
     gsap.fromTo(
       svg,
       {
         rotation: 0,
-
       },
       {
         rotation: 675,
-
         duration: 4,
         ease: "power4.out",
-
       }
     );
   });
