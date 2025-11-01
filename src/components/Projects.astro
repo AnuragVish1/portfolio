@@ -2,107 +2,133 @@
 import { MyDrawer } from "@/components/MyDrawer";
 
 let projects = [
-    {
-        title: "course registration app",
-        image: "/course-registration.png",
-        description: `Developed a comprehensive university admin side course management system using ASP.NET framework and
+  {
+    title: "course registration app",
+    image: "/course-registration.png",
+    description: `Developed a comprehensive university admin side course management system using ASP.NET framework and
     SQL database.
     Implemented secure CRUD operations for managing course catalogs, semester scheduling, and course and
     semester assigning with an intuitive UI`,
-    },
-    {
-        title: "tournament organizer",
-        image: "/tournament-organizer.png",
-        description: `Built a Tournament Organizer app using React as frontend. Implemented Google Authentication for secure
+    images: [],
+  },
+  {
+    title: "tournament organizer",
+    image: "/tournament-organizer.png",
+    description: `Built a Tournament Organizer app using React as frontend. Implemented Google Authentication for secure
     user access and role-based permissions management, RESTFUL API integration for communicating with the
     PHP backend and intuitive UI with use of shadcn and tailwindcss.`,
-    },
+    images: [],
+  },
+  {
+    title: "blog app",
+    image: "/blog-dashboard.png",
+    description: `Integrated blog posts for Equanimous Technologies official website. Created separate portal for creating and managing the blog posts with a user-friendly UI using React. Implemented role-based permission management via REST-API integration with the backend. The app consists of features like tags, rich text editor via the help of tiptap library, user settings for changing their username, password, email and profile picture and a dashboard for showing all the latest blog created. Implemented DOM-purifying for preventing XSS attacks.`,
+    images: ["/blog-dashboard.png", "pic2.png", "settings.png"],
+  },
 ];
 ---
 
 <div class="h-screen flex justify-center items-center" id="projects">
-    <div
-        class="flex md:justify-between items-center flex-col h-[90%] w-[90%] p-10 rounded-xl text-[#1c1c1c]"
-        id="projectsDiv"
-    >
-        <div class="flex pb-5 w-full items-center">
-            <h1
-                id="projectHeading"
-                class="text-left text-3xl font-extrabold font-inter whitespace-nowrap leading-none w-[100%] border-b-2 border-[#1c1c1c] pb-5 overflow-hidden md:text-[8rem] text-[2.8rem]"
-            >
-                projects
-            </h1>
-        </div>
-        <div class="w-[100%] flex flex-col h-[30rem] md:pt-0 pt-8">
-            <div class="flex flex-col justify-center">
-                {
-                    projects.map((project) => (
-                        <div id="cards" class="w-full h-full">
-                            <MyDrawer
-                                client:load
-                                title={project.title}
-                                description={project.description}
-                                image={project.image}
-                            >
-                                <div class="border-b-1 border-[#1c1c1c] pb-10 pt-10 relative group hover:text-white transition-all project-list duration-300 cursor-none">
-                                    <div class="absolute bg-[#1c1c1c] h-0 w-full group-hover:h-full transition-all duration-500 top-0 -z-50" ></div>
-                                    <div class="flex justify-between items-center">
-                                    <a
-                                        href="#aboutus"
-                                        class="md:text-5xl text-[1.5rem] cursor-none font-inter font-bold group-hover:pl-10 md:w-auto w-[70%] pl-5 transition-all duration-400 ease-out h-auto text-left"
-                                    >
-                                        {project.title}
-                                    </a>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:mr-10 mr-5 transition-all duration-400 ease-out" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right-icon lucide-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                                    </div>
-                                </div>
-                            </MyDrawer>
-                        </div>
-                    ))
-                }
-            </div>
-        </div>
+  <div
+    class="flex md:justify-between items-center flex-col h-[90%] w-[90%] p-10 rounded-xl text-[#1c1c1c]"
+    id="projectsDiv"
+  >
+    <div class="flex pb-5 w-full items-center">
+      <h1
+        id="projectHeading"
+        class="text-left text-3xl font-extrabold font-inter whitespace-nowrap leading-none w-[100%] border-b-2 border-[#1c1c1c] pb-5 overflow-hidden md:text-[8rem] text-[2.8rem]"
+      >
+        projects
+      </h1>
     </div>
+    <div class="w-[100%] flex flex-col h-[30rem] md:pt-0 pt-8">
+      <div class="flex flex-col justify-center">
+        {
+          projects.map((project) => (
+            <div id="cards" class="w-full h-full">
+              <MyDrawer
+                client:load
+                title={project.title}
+                description={project.description}
+                image={project.image}
+                images={project.images}
+              >
+                <div class="border-b-1 border-[#1c1c1c] pb-10 pt-10 relative group hover:text-white transition-all project-list duration-300 cursor-none">
+                  <div class="absolute bg-[#1c1c1c] h-0 w-full group-hover:h-full transition-all duration-500 top-0 -z-50" />
+                  <div class="flex justify-between items-center">
+                    <a
+                      href="#aboutus"
+                      class="md:text-5xl text-[1.5rem] cursor-none font-inter font-bold group-hover:pl-10 md:w-auto w-[70%] pl-5 transition-all duration-400 ease-out h-auto text-left"
+                    >
+                      {project.title}
+                    </a>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="group-hover:mr-10 mr-5 transition-all duration-400 ease-out"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-arrow-up-right-icon lucide-arrow-up-right"
+                    >
+                      <>
+                        <path d="M7 7h10v10" />
+                        <path d="M7 17 17 7" />
+                      </>
+                    </svg>
+                  </div>
+                </div>
+              </MyDrawer>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
-    import { gsap } from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
-    import { SplitText } from "gsap/SplitText";
-    gsap.registerPlugin(ScrollTrigger, SplitText);
-    document.addEventListener("DOMContentLoaded", () => {
-        var heading = document.querySelector("#projectHeading");
-        var myDiv = document.getElementById("projects");
-        var headingSplit = new SplitText(heading, {
-            type: "words, lines, chars",
-        });
-        var cards = document.querySelectorAll("#cards");
-
-        // cards animation
-        gsap.from(cards, {
-            duration: 1,
-            y: 100, // Positive value makes cards come from bottom to top
-            opacity: 0,
-            stagger: 0.2, // Slightly increased delay between cards
-            ease: "power3.out", // Smoother easing for more natural movement
-            scrollTrigger: {
-                trigger: myDiv,
-                start: "top center",
-                toggleActions: "restart none none reverse",
-            },
-        });
-
-        // heading animation
-        gsap.from(headingSplit.chars, {
-            duration: 0.7,
-            y: 150,
-            stagger: 0.08,
-            ease: "power4.out",
-            scrollTrigger: {
-                trigger: myDiv,
-                start: "top center",
-                toggleActions: "restart none none reverse",
-            },
-        });
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  document.addEventListener("DOMContentLoaded", () => {
+    var heading = document.querySelector("#projectHeading");
+    var myDiv = document.getElementById("projects");
+    var headingSplit = new SplitText(heading, {
+      type: "words, lines, chars",
     });
+    var cards = document.querySelectorAll("#cards");
+
+    // cards animation
+    gsap.from(cards, {
+      duration: 1,
+      y: 100,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: myDiv,
+        start: "top center",
+        toggleActions: "restart none none reverse",
+      },
+    });
+
+    // heading animation
+    gsap.from(headingSplit.chars, {
+      duration: 0.7,
+      y: 150,
+      stagger: 0.08,
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: myDiv,
+        start: "top center",
+        toggleActions: "restart none none reverse",
+      },
+    });
+  });
 </script>

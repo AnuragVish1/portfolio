@@ -67,7 +67,7 @@ let socials = [
       x: 0,
       y: 0,
       duration: 1.5,
-      ease: "elastic.out(1, 2)", // Gives a nice bouncy return
+      ease: "elastic.out(1, 2)",
     });
   }
   function resetDiv() {
@@ -75,7 +75,7 @@ let socials = [
       x: 0,
       y: 0,
       duration: 2,
-      ease: "elastic.out(1, 2)", // Gives a nice bouncy return
+      ease: "elastic.out(1, 2)",
     });
   }
   // Set up the hover event listeners
@@ -96,16 +96,16 @@ let socials = [
 
     // Move text toward cursor, but only slightly (adjust multiplier for intensity)
     gsap.to(textElement, {
-      x: x * 0.4, // Reduce movement by multiplying by a small value
+      x: x * 0.4,
       y: y * 0.4,
-      duration: 1, // Makes movement smooth
+      duration: 1,
       ease: "power2.out",
     });
 
     gsap.to(contactDiv, {
-      x: x * 0.5, // Reduce movement by multiplying by a small value
+      x: x * 0.5, 
       y: y * 0.5,
-      duration: 1, // Makes movement smooth
+      duration: 1,
       ease: "power4.out",
     });
   }
