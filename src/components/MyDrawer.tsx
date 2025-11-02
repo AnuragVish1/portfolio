@@ -49,7 +49,7 @@ export const MyDrawer = ({ children, image, description, title, images }) => {
         }}
         >
           {isOverlyClick && images.length != 0 &&  (
-            <div className=" bg-[#0000004b] fixed h-full w-full inset-0 z-[100] p-10 backdrop-blur-sm rounded-lg" onClick={(e) => {
+            <div className=" bg-[#00000041] fixed h-full w-full inset-0 z-[100] p-10 backdrop-blur-xl rounded-lg" onClick={(e) => {
               e.stopPropagation()
             }}>
               {/*navbar*/}
@@ -66,15 +66,15 @@ export const MyDrawer = ({ children, image, description, title, images }) => {
               {/*carousel*/}
               <div className="w-full h-full flex justify-center items-center">
                 <Carousel className="md:w-[50%] w-[95%]">
-                  <CarouselContent>
+                  <CarouselContent className="">
                     {images.map((image, _) => (
                       <CarouselItem key={_}>
-                        <img src={image} alt="" draggable="false" className="rounded-lg z-100 h-[22rem] object-contain" />
+                        <img src={image} alt="" draggable="false" className="rounded-lg z-100  " />
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious />
-                  <CarouselNext />
+                  <CarouselPrevious  className="l-2"/>
+                  <CarouselNext className="mr-2"/>
                 </Carousel>
               </div>
             </div>
@@ -88,7 +88,7 @@ export const MyDrawer = ({ children, image, description, title, images }) => {
               <img
                 src={image}
                 alt=""
-                className=" rounded-xl h-[19rem]  mt-5 object-contain"
+                className=" rounded-xl md:h-[19rem] mt-5 md:object-cover lg:object-cover object-contain bg-amber-100"
                 onClick={(e) => { if (images.length != 0) { setIsOverlyClick(true) }}}
               />
 
